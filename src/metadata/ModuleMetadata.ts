@@ -3,14 +3,14 @@ import { CommandMetadata } from "./CommandMetadata";
 /**
  * Stores metadat for modules declared using the decorator syntax.
  */
-export class ModuleMetadata {
+export interface ModuleMetadata {
+    /**
+     * Target class where the decorator is used.
+     */
+    target: Function | string;
+
     /**
      * The name of this module.
      */
     name: string;
-
-    /**
-     * An array of command metadata for commands attached to this module.
-     */
-    commands: CommandMetadata[] = [];
 }

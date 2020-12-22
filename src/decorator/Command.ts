@@ -1,20 +1,16 @@
-import { Module } from "./Module";
+import { getMetadataContainer } from "../";
+import { CommandMetadata } from "../metadata/CommandMetadata";
 
-/**
- * Represents a command handler.
- */
+type CommandOptions = Exclude<CommandMetadata, "name">;
 
 /**
  * Provides a way to decorate classes as representing a client module.
  */
-export function Command(): MethodDecorator {
-    return (object, key, descriptor) => {};
-}
-
-@Module()
-class A {
-    @Command()
-    test() {
-        console.log("boop");
-    }
+export function Command(
+    name: string,
+    options?: Partial<CommandOptions>
+): MethodDecorator {
+    return (target, key) => {
+        getMetadataContainer().commands.push({ module, name });
+    };
 }

@@ -3,14 +3,19 @@ import { ModuleMetadata } from "./ModuleMetadata";
 /**
  * Stores metadata for module listeners.
  */
-export class ListenerMetadata {
+export interface ListenerMetadata {
     /**
-     * Stores metadata for the module this listener belongs to.
+     * Target class where the decorator is used.
      */
-    module: ModuleMetadata;
+    target: Function | string;
 
     /**
-     * The event name this listener is listening for.
+     * Metadata of the module this command belongs to.
+     */
+    moduleMetadata: ModuleMetadata;
+
+    /**
+     * The name of the event this listener is listening for.
      */
     eventName: string;
 }
