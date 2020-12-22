@@ -1,3 +1,4 @@
+import { Constructor } from "../types/classes";
 import { ModuleMetadata } from "./ModuleMetadata";
 
 /**
@@ -7,7 +8,7 @@ export interface CommandMetadata {
     /**
      * Target class where the decorator is used.
      */
-    target: Function;
+    target: Constructor<unknown>;
 
     /**
      * Metadata of the module this command belongs to.

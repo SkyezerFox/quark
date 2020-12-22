@@ -1,5 +1,6 @@
 import { getMetadataContainer } from "../";
 import { CommandMetadata } from "../metadata/CommandMetadata";
+import { Constructor } from "../types/classes";
 
 type CommandOptions = Exclude<CommandMetadata, "name">;
 
@@ -10,7 +11,7 @@ export function Command(
     name: string,
     options?: Partial<CommandOptions>
 ): MethodDecorator {
-    return (target, key) => {
-        getMetadataContainer().commands.push({ name });
+    return (target: Constructor<unknown>) => {
+        getMetadataContainer().commands.push({ target, name });
     };
 }

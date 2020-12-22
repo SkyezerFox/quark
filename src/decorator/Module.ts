@@ -12,7 +12,7 @@ export function Module(name: string): ClassDecorator;
 export function Module(name?: string): ClassDecorator {
     return target => {
         getMetadataContainer().modules.push({
-            target: target as Constructor<DecoratedModule>,
+            target: target as Constructor<unknown>,
             name: name || target.name,
         });
     };

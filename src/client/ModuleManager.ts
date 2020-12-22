@@ -3,9 +3,10 @@ import "reflect-metadata";
 import { readdir, stat } from "fs/promises";
 import { join } from "path";
 
+import { getMetadataContainer } from "../";
 import { Module } from "../module/Module";
 import { Constructor } from "../types/classes";
-import { Quark } from "./Quark";
+import { Quark, QuarkStore } from "./Quark";
 
 type ModuleImport = { [K in string]: Constructor<Module> };
 
@@ -13,7 +14,7 @@ type ModuleImport = { [K in string]: Constructor<Module> };
  * Manages the loading and initialization of modules.
  */
 export class ModuleManager {
-    constructor(readonly quark: Quark) {}
+    constructor(readonly quark: Quark<QuarkStore>) {}
 
     /**
      * Looks for decorated modules in the given path.
@@ -21,7 +22,7 @@ export class ModuleManager {
     async fetchDecoratedModules(
         path: string,
         recursive = false
-    ): Promise<Constructor<Module>[]> {
+    ): Promise<Constructor<unknown>[]> {
         const files = await readdir(path);
         for (const file of files) {
             // check if target is a directory. if recursive mode enabled,
@@ -38,7 +39,14 @@ export class ModuleManager {
                 continue;
             }
 
-            (await import(file)) as ModuleImport;
+            try {
+                (await import(file)) as ModuleImport;
+            } catch (err) {
+                this.quark.logger.warn("Failed to load module in " + file);
+                console.error(err);
+            }
         }
+
+        return getMetadataContainer().modules.map(v => v.target);
     }
 }

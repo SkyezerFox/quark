@@ -1,12 +1,17 @@
 import { getMetadataContainer } from "../";
-import { CommandMetadata } from "../metadata/CommandMetadata";
-import { ClientEventNames } from "../types/discord";
+import { Constructor } from "../types/classes";
+import { ClientEventNames, ClientEvents } from "../types/discord";
+
+/**
+ * Tpe for the generic arguments of a module listener.
+ */
+type DecoratedListener = (...args: ClientEvents[keyof ClientEvents]) => void;
 
 /**
  * Provides a way to decorate classes as representing a client module.
  */
 export function Listener(eventName: ClientEventNames): MethodDecorator {
-    return (target, key) => {
-        getMetadataContainer().listeners.push({ name });
+    return (target: Constructor<unknown>) => {
+        getMetadataContainer().listeners.push({ target, eventName });
     };
 }

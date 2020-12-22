@@ -1,11 +1,11 @@
-import { Quark } from "../src/client/Quark";
 import { Command } from "../src/decorator/Command";
 import { Module } from "../src/decorator/Module";
+import { Context } from "../src/module/Context";
 
 @Module("bonk")
 class Bonk {
     @Command("test")
-    test(quark: Quark) {
-        console.log("test ran");
+    async test(ctx: Context) {
+        ctx.reply("uwu");
     }
 }

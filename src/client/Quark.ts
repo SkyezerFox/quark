@@ -1,6 +1,8 @@
 import { Client, ClientOptions } from "discord.js";
 
 import { Module } from "../module/Module";
+import { createLogger } from "../util/logging";
+import { ModuleManager } from "./ModuleManager";
 
 /**
  * Client options this instance will use.
@@ -19,7 +21,7 @@ const DEFAULT_QUARK_OPTIONS: QuarkOptions = {
 /**
  * Generic type for the quark store. Allows storing of key/value pairs between modules.
  */
-type QuarkStore = { [K in string]: unknown };
+export type QuarkStore = { [K in string]: unknown };
 
 /**
  * The base quark client.
@@ -39,6 +41,16 @@ export class Quark<
      */
     readonly modules: Module[] = [];
 
+    /**
+     * The quark module manager.
+     */
+    readonly moduleManager = new ModuleManager(this);
+
+    /**
+     * The quark logger.
+     */
+    readonly logger = createLogger("quark");
+
     constructor(options?: Partial<QuarkOptions>) {
         super(options);
         this.options = { ...DEFAULT_QUARK_OPTIONS, ...options };
@@ -48,7 +60,7 @@ export class Quark<
      * Add a module to this quark instance.
      * @param modules
      */
-    public addModule(...modules: Module[]) {
+    public addModule(...modules: Module[]): this {
         return this;
     }
 
@@ -56,7 +68,7 @@ export class Quark<
      * Initialize the bot and connect to Discord.
      * @param token
      */
-    async login(token: string) {
+    async login(token: string): Promise<string> {
         return token;
     }
 }
