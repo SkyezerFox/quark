@@ -11,6 +11,6 @@ export function Command(
     options?: Partial<CommandOptions>
 ): MethodDecorator {
     return (target, key) => {
-        getMetadataContainer().commands.push({ module, name });
+        getMetadataContainer().commands.push({ name });
     };
 }

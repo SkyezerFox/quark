@@ -7,6 +7,7 @@ export interface ModuleMetadata {
     /**
      * Target class where the decorator is used.
      */
+    // @eslint-disable-next-line
     target: Function | string;
 
     /**

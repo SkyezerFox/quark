@@ -1,4 +1,7 @@
 import { getMetadataContainer } from "../";
+import { Module as ModuleClass } from "../module/Module";
+
+class DecoratedModule extends ModuleClass {}
 
 export function Module(): ClassDecorator;
 
