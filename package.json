@@ -22,5 +22,9 @@
     "scripts": {
         "test": "mocha --require ts-node/register ./tests/**/*.ts",
         "lint": "eslint"
+    },
+    "dependencies": {
+        "discord.js": "^12.5.1",
+        "winston": "^3.3.3"
     }
 }
