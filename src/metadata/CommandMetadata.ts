@@ -7,12 +7,12 @@ export interface CommandMetadata {
     /**
      * Target class where the decorator is used.
      */
-    target: Function | string;
+    target: Function;
 
     /**
      * Metadata of the module this command belongs to.
      */
-    moduleMetadata: ModuleMetadata;
+    moduleMetadata?: ModuleMetadata;
 
     /**
      * The name of this command.

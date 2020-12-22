@@ -1,3 +1,5 @@
+import { ClientEventNames } from "../types/discord";
+
 export interface ListenerOptions {
     destroyAfter: number;
 }
@@ -7,12 +9,7 @@ export interface ListenerOptions {
  */
 export abstract class Listener {
     constructor(
-        readonly eventName: string,
+        readonly eventName: ClientEventNames,
         readonly options: ListenerOptions
     ) {}
 }
-
-export type ListenerConstructor = (
-    eventName: string,
-    options: ListenerOptions
-) => Listener;

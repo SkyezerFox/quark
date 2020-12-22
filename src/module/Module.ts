@@ -1,6 +1,7 @@
 import { Quark } from "../client/Quark";
-import { Command, CommandConstructor } from "./Command";
-import { Listener, ListenerConstructor } from "./Listener";
+import { Constructor } from "../types/classes";
+import { Command } from "./Command";
+import { Listener } from "./Listener";
 
 export interface ModuleOptions {
     loadBefore: string[];
@@ -24,11 +25,11 @@ export abstract class Module {
      * Add a command to this module.
      * @param command
      */
-    addCommand(command: CommandConstructor) {}
+    addCommand(command: Constructor<Command>) {}
 
     /**
      * Add a listener to this module.
      * @param listener
      */
-    addListener(listener: ListenerConstructor) {}
+    addListener(listener: Constructor<Listener>) {}
 }

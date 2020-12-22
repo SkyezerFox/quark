@@ -1,9 +1,10 @@
 import { getMetadataContainer } from "../";
-import { Module as ModuleClass } from "../module/Module";
+import { Constructor } from "../types/classes";
 
-class DecoratedModule extends ModuleClass {}
+class DecoratedModule {}
 
 export function Module(): ClassDecorator;
+export function Module(name: string): ClassDecorator;
 
 /**
  * Provides a way to decorate classes as representing a client module.
@@ -11,7 +12,7 @@ export function Module(): ClassDecorator;
 export function Module(name?: string): ClassDecorator {
     return target => {
         getMetadataContainer().modules.push({
-            target,
+            target: target as Constructor<DecoratedModule>,
             name: name || target.name,
         });
     };

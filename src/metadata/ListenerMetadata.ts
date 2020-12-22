@@ -1,3 +1,4 @@
+import { ClientEventNames } from "../types/discord";
 import { ModuleMetadata } from "./ModuleMetadata";
 
 /**
@@ -7,15 +8,15 @@ export interface ListenerMetadata {
     /**
      * Target class where the decorator is used.
      */
-    target: Function | string;
+    target: Function;
 
     /**
      * Metadata of the module this command belongs to.
      */
-    moduleMetadata: ModuleMetadata;
+    moduleMetadata?: ModuleMetadata;
 
     /**
      * The name of the event this listener is listening for.
      */
-    eventName: string;
+    eventName: ClientEventNames;
 }

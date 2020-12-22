@@ -17,10 +17,22 @@ const DEFAULT_QUARK_OPTIONS: QuarkOptions = {
 };
 
 /**
+ * Generic type for the quark store. Allows storing of key/value pairs between modules.
+ */
+type QuarkStore = { [K in string]: unknown };
+
+/**
  * The base quark client.
  */
-export class Quark extends Client {
+export class Quark<
+    S extends QuarkStore = Record<string, never>
+> extends Client {
     options: QuarkOptions;
+
+    /**
+     * The quark store.
+     */
+    readonly store: S = {} as S;
 
     /**
      * An array of modules on this client.
