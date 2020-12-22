@@ -5,7 +5,7 @@ import { join } from "path";
 
 import { getMetadataContainer } from "../";
 import { Module } from "../module/Module";
-import { Constructor } from "../types/classes";
+import { Constructor } from "../types/util";
 import { Quark, QuarkStore } from "./Quark";
 
 type ModuleImport = { [K in string]: Constructor<Module> };

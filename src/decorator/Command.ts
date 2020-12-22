@@ -1,6 +1,6 @@
 import { getMetadataContainer } from "../";
 import { CommandMetadata } from "../metadata/CommandMetadata";
-import { Constructor } from "../types/classes";
+import { Constructor } from "../types/util";
 
 type CommandOptions = Exclude<CommandMetadata, "name">;
 

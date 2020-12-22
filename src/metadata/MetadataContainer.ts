@@ -1,5 +1,5 @@
 import { Command } from "../module/Command";
-import { Constructor } from "../types/classes";
+import { Constructor } from "../types/util";
 import { CommandMetadata } from "./CommandMetadata";
 import { ListenerMetadata } from "./ListenerMetadata";
 import { ModuleMetadata } from "./ModuleMetadata";
@@ -32,7 +32,9 @@ export class MetadataContainer {
      * Filter loaded listeners by the given target.
      * @param target
      */
-    filterListeners(target: Constructor<unknown>) {}
+    filterListeners(target: Constructor<unknown>) {
+        return this.filterByTarget(this.commands, target);
+    }
 
     /**
      * Filters given array by a given target or targets.

@@ -1,6 +1,6 @@
 import { getMetadataContainer } from "../";
-import { Constructor } from "../types/classes";
 import { ClientEventNames, ClientEvents } from "../types/discord";
+import { Constructor } from "../types/util";
 
 /**
  * Tpe for the generic arguments of a module listener.

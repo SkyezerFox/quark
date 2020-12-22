@@ -1,5 +1,5 @@
-import { Constructor } from "../types/classes";
 import { ClientEventNames } from "../types/discord";
+import { Constructor } from "../types/util";
 import { ModuleMetadata } from "./ModuleMetadata";
 
 /**

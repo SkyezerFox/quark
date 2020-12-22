@@ -1,7 +1,5 @@
 import { getMetadataContainer } from "../";
-import { Constructor } from "../types/classes";
-
-class DecoratedModule {}
+import { Constructor } from "../types/util";
 
 export function Module(): ClassDecorator;
 export function Module(name: string): ClassDecorator;

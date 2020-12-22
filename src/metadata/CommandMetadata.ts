@@ -1,4 +1,4 @@
-import { Constructor } from "../types/classes";
+import { Constructor } from "../types/util";
 import { ModuleMetadata } from "./ModuleMetadata";
 
 /**

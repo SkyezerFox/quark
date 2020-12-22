@@ -1,4 +1,4 @@
-import { Constructor } from "../types/classes";
+import { Constructor } from "../types/util";
 
 /**
  * Stores metadat for modules declared using the decorator syntax.

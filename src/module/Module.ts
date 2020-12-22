@@ -1,5 +1,5 @@
 import { Quark } from "../client/Quark";
-import { Constructor } from "../types/classes";
+import { Constructor } from "../types/util";
 import { Command } from "./Command";
 import { Listener } from "./Listener";
 
